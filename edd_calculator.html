@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Calculator Suite — EDD Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="edd">
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+                <a href="index.html" class="branding">
+                    <span class="branding__icon">🩺</span>
+                    <span class="branding__text">
+                        <span class="branding__title">Health Calculator Suite</span>
+                        <span class="branding__subtitle">BMI, Height, EDD, Cycle</span>
+                    </span>
+                </a>
+                <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+                <nav id="primary-navigation" class="main-nav hidden" aria-label="Primary navigation">
+                    <a class="nav-link" href="index.html" data-nav="bmi">BMI Calculator</a>
+                    <a class="nav-link" href="height.html" data-nav="height">Height Converter</a>
+                    <a class="nav-link" href="edd_calculator.html" data-nav="edd">EDD Calculator</a>
+                    <a class="nav-link" href="menstrual_cycle.html" data-nav="menstrual">Cycle Calculator</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="container">
+                <section class="hero">
+                    <div>
+                        <h1 class="hero__title">EDD Calculator</h1>
+                        <p class="hero__subtitle">Estimate your due date with weeks remaining, pregnancy progress, and trimester guidance.</p>
+                    </div>
+                </section>
+
+                <section class="card card--padded card--narrow">
+                    <form id="eddForm" novalidate>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="lmpInput">First day of last menstrual period</label>
+                                <input id="lmpInput" type="date" required>
+                                <span id="lmpError" class="error-message" role="alert" aria-live="polite" style="display:none"></span>
+                            </div>
+                        </div>
+
+                        <div class="button-row">
+                            <button class="button" type="submit">Calculate EDD</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="card card--padded card--narrow mt-4" id="eddResult" style="display:none;" aria-live="polite">
+                    <p class="result-card__title">Estimated Due Date Overview</p>
+                    <div class="result-grid">
+                        <div class="result-box">
+                            <span class="result-box__label">Estimated due date</span>
+                            <p class="result-box__value" id="eddDate"></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Weeks remaining</span>
+                            <p class="result-box__value" id="remainingWeeks"></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Days remaining</span>
+                            <p class="result-box__value" id="remainingDays"></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Current trimester</span>
+                            <p class="result-box__value" id="trimesterLabel"></p>
+                        </div>
+                    </div>
+                    <div class="progress-card">
+                        <span class="result-box__label">Pregnancy progress</span>
+                        <div class="progress-bar">
+                            <div class="progress-bar__fill" id="progressBarFill" style="width:0%"></div>
+                        </div>
+                        <p class="help-text" id="progressValue">0%</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">Designed for professional health calculators with accessibility, clarity, and modern responsiveness.</div>
+        </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

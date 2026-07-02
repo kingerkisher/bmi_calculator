@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Calculator Suite — Menstrual Cycle Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="menstrual">
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+                <a href="index.html" class="branding">
+                    <span class="branding__icon">🩺</span>
+                    <span class="branding__text">
+                        <span class="branding__title">Health Calculator Suite</span>
+                        <span class="branding__subtitle">BMI, Height, EDD, Cycle</span>
+                    </span>
+                </a>
+                <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+                <nav id="primary-navigation" class="main-nav hidden" aria-label="Primary navigation">
+                    <a class="nav-link" href="index.html" data-nav="bmi">BMI Calculator</a>
+                    <a class="nav-link" href="height.html" data-nav="height">Height Converter</a>
+                    <a class="nav-link" href="edd_calculator.html" data-nav="edd">EDD Calculator</a>
+                    <a class="nav-link" href="menstrual_cycle.html" data-nav="menstrual">Cycle Calculator</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="container">
+                <section class="hero">
+                    <div>
+                        <h1 class="hero__title">Menstrual Cycle Calculator</h1>
+                        <p class="hero__subtitle">Estimate your next period, ovulation date, and fertile window with a clear, friendly cycle planning tool.</p>
+                    </div>
+                </section>
+
+                <section class="card card--padded card--narrow">
+                    <form id="menstrualForm" novalidate>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="menstrualLmp">First day of last menstrual period</label>
+                                <input id="menstrualLmp" type="date" required>
+                                <span id="menstrualLmpError" class="error-message" role="alert" aria-live="polite" style="display:none"></span>
+                            </div>
+                            <div class="field">
+                                <label for="cycleLength">Average cycle length (days)</label>
+                                <input id="cycleLength" type="number" step="1" min="21" max="35" value="28" required>
+                                <small>Most cycles range from 21 to 35 days.</small>
+                                <span id="cycleLengthError" class="error-message" role="alert" aria-live="polite" style="display:none"></span>
+                            </div>
+                        </div>
+
+                        <div class="button-row">
+                            <button class="button" type="submit">Calculate cycle</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="card card--padded card--narrow mt-4" id="menstrualResult" style="display:none;" aria-live="polite">
+                    <p class="result-card__title">Cycle Forecast</p>
+                    <div class="result-grid">
+                        <div class="result-box">
+                            <span class="result-box__label">Next period</span>
+                            <p class="result-box__value" id="nextPeriodDate"></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Estimated ovulation</span>
+                            <p class="result-box__value" id="ovulationDate"></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Fertile window</span>
+                            <p class="result-box__value"><span id="fertileStartDate"></span> — <span id="fertileEndDate"></span></p>
+                        </div>
+                        <div class="result-box">
+                            <span class="result-box__label">Days until next period</span>
+                            <p class="result-box__value" id="daysUntilNextPeriod"></p>
+                        </div>
+                    </div>
+                    <p class="help-text" id="cycleAdvice"></p>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">Designed for professional health calculators with accessibility, clarity, and modern responsiveness.</div>
+        </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
